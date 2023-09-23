@@ -33,7 +33,7 @@ export default function RegisterComponent() {
       {/*<img src={LinkedinLogo} className="linkedinLogo" />*/}
 
       <div className="login-wrapper-inner">
-        <h1 className="heading">Make the most of your professional life</h1>
+        <h1 className="heading">Make the most of financial life</h1>
 
         <div className="auth-inputs">
           <input
@@ -68,7 +68,7 @@ export default function RegisterComponent() {
       <hr class="hr-text" data-content="or" />
       <div className="google-btn-container">
         <p className="go-to-signup">
-          Already on LinkedIn?{" "}
+          Already on Finsocial?{" "}
           <span className="join-now" onClick={() => navigate("/")}>
             Sign in
           </span>
