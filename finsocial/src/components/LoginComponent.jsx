@@ -22,7 +22,7 @@ export default function LoginComponent() {
   return (
         <div className="login-wrapper">
           <div className="banner">
-            <h1>Welcome to Finsocial</h1> 
+            <h1>Finsocial</h1> 
           </div>
           <div className="login-wrapper-inner">
             <h1 className="heading">Sign in</h1>
