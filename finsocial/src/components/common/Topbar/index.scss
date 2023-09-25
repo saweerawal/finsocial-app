@@ -16,6 +16,13 @@
     width: 55%;
     margin-left: 30px;
   }
+
+  .icon-labels{
+    line-height: 25px;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;  
+  }
   
   .react-icon {
     color: #787878;
@@ -24,6 +31,7 @@
   
   .react-icon:hover {
     color: black;
+    font-weight: bold;
   }
   
   .user-logo {

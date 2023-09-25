@@ -4,8 +4,10 @@ import {
   AiOutlineHome,
   AiOutlineUserSwitch,
   AiOutlineSearch,
-  AiOutlineMessage,
+  AiOutlineFund,
   AiOutlineBell,
+  AiOutlineAppstore,
+  AiOutlineIdcard
 } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { BsBriefcase } from "react-icons/bs";
@@ -80,24 +82,55 @@ export default function Topbar({ currentUser }) {
         />
       ) : (
         <div className="react-icons">
+          <div className="icon-labels react-icon">
           <AiOutlineSearch
             size={30}
-            className="react-icon"
             onClick={() => setIsSearch(true)}
           />
+          <div onClick={() => setIsSearch(true)}>Search</div>
+          </div>
+          <div className="icon-labels react-icon">
           <AiOutlineHome
             size={30}
-            className="react-icon"
             onClick={() => goToRoute("/home")}
           />
+          <div onClick={() => goToRoute("/home")}>Home</div>
+          </div>
+          <div className="icon-labels react-icon">
+          <AiOutlineAppstore
+            size={30}
+            onClick={() => goToRoute("/stocknews")}
+          />
+          <div onClick={() => goToRoute("/stocknews")}>Stock News</div>
+          </div>
+          <div className="icon-labels react-icon">
+          <AiOutlineIdcard
+            size={30}
+            onClick={() => goToRoute("/portfolio")}
+          />
+          <div onClick={() => goToRoute("/portfolio")}>Portfolio</div>
+          </div>
+          <div className="icon-labels react-icon">
           <AiOutlineUserSwitch
             size={30}
-            className="react-icon"
             onClick={() => goToRoute("/connections")}
           />
-          <BsBriefcase size={30} className="react-icon" />
-          <AiOutlineMessage size={30} className="react-icon" />
-          <AiOutlineBell size={30} className="react-icon" />
+          <div onClick={() => goToRoute("/connections")}>Follow People</div>
+          </div>
+          <div className="icon-labels react-icon">
+          <AiOutlineFund
+            size={30}
+            onClick={() => goToRoute("/insights")}
+          />
+          <div onClick={() => goToRoute("/insights")}>Insights</div>
+          </div>
+          <div className="icon-labels react-icon">
+          <AiOutlineBell 
+            size={30}
+            onClick={() => goToRoute("/notifications")}
+          />
+          <div onClick={() => goToRoute("/notifications")}>Notifications</div>
+          </div>
         </div>
       )}
       <img
