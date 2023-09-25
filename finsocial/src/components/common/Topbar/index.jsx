@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import SearchUsers from "../SearchUsers";
+import FinSocialLogo from "../../../assets/FinSocial.png";
 import {
   AiOutlineHome,
   AiOutlineUserSwitch,
@@ -75,6 +76,7 @@ export default function Topbar({ currentUser }) {
         <></>
       )}
 
+      <img className="logo" src={FinSocialLogo} alt="FinSocialLogo" />
       {isSearch ? (
         <SearchUsers
           setIsSearch={setIsSearch}
