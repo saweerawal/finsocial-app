@@ -42,6 +42,7 @@ const ModalComponent = ({
             onClick={isEdit ? updateStatus : sendStatus}
             key="submit"
             type="primary"
+            className="button-post"
             disabled={status.length > 0 ? false : true}
           >
             {isEdit ? "Update" : "Post"}
