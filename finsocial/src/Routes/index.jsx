@@ -5,6 +5,7 @@ import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import HomeLayout from "../layouts/HomeLayout";
 import ConnectionLayout from "../layouts/ConnectionLayout";
+import StockNews from "../Pages/StockNews";
 
 export const router = createBrowserRouter([
     {
@@ -22,5 +23,9 @@ export const router = createBrowserRouter([
     {
       path: "/connections",
       element: <ConnectionLayout />,
+    },
+    {
+      path: "/stocknews",
+      element: <StockNews />,
     }
   ]);
