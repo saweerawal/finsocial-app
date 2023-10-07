@@ -6,6 +6,7 @@ import Register from "../Pages/Register";
 import HomeLayout from "../layouts/HomeLayout";
 import ConnectionLayout from "../layouts/ConnectionLayout";
 import StockNewsLayout from "../layouts/StockNewsLayout";
+import ProfileLayout from "../layouts/ProfileLayout";
 
 export const router = createBrowserRouter([
     {
@@ -27,5 +28,9 @@ export const router = createBrowserRouter([
     {
       path: "/stocknews",
       element: <StockNewsLayout />,
+    },
+    {
+      path: "/profile",
+      element: <ProfileLayout />,
     }
   ]);
