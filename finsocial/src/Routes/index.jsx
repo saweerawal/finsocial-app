@@ -7,6 +7,7 @@ import HomeLayout from "../layouts/HomeLayout";
 import ConnectionLayout from "../layouts/ConnectionLayout";
 import StockNewsLayout from "../layouts/StockNewsLayout";
 import ProfileLayout from "../layouts/ProfileLayout";
+import Insights from "../Pages/Insights";
 
 export const router = createBrowserRouter([
     {
@@ -32,5 +33,9 @@ export const router = createBrowserRouter([
     {
       path: "/profile",
       element: <ProfileLayout />,
+    },
+    {
+      path: "/insights",
+      element: <Insights />,
     }
   ]);
