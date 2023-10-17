@@ -1,0 +1,44 @@
+/* InsightsComponent.css */
+
+/* Style the container holding the speedometers */
+.insights-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center; /* Arrange speedometers side by side */
+    align-items:center;
+    padding: 30px; /* Add padding for spacing */
+  }
+  
+  /* Style individual speedometers */
+  .speedometer {
+    /*flex: 1; /* Distribute available space evenly between speedometers */
+    max-width: 300px; /* Adjust the maximum width as needed */
+    margin-right: 25px; /* Add margin for spacing between speedometers */
+    padding-top: 35px;
+    background-color: #f0f0f0; /* Set background color */
+    /*border: 1px solid #ccc; /* Add a border */
+    border-radius: 10px; /* Rounded corners */
+    /*box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+    text-align: center;
+  }
+  
+  /* Style the speedometer title (currentValueText) */
+  .speedometer h2 {
+    font-size: 20px;
+    /*margin-bottom: 10px;*/
+  }
+  
+  /* Style the speedometer value */
+  .speedometer .current-value {
+    font-size: 24px;
+    font-weight: bold;
+    color: #007bff; /* Change text color */
+  }
+  
+  /* Style the segment labels */
+  .speedometer .segment-label {
+    color: #555;
+    font-size: 14px;
+    /*margin-top: 5px;*/
+  }
+  
