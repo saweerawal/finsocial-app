@@ -62,7 +62,7 @@ export default function StockNewsComponent() {
               </Typography>
             </CardContent>
             <CardActions sx={{ maxHeight: '20%'}}>
-              <Button size="small">Learn More</Button>
+              <Button style={{marginLeft: '5px'}} size="small" onClick={event =>  window.location.href=p.url}>Learn More</Button>
             </CardActions>
           </Card> 
     </li>
