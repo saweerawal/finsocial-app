@@ -6,16 +6,15 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import "../Sass/StockNewsComponent.scss";
-import { AutoComplete } from "antd";
+import { AutoComplete, Modal } from "antd";
 import FALLBACK_IMAGE from '../assets/Finsocial.png';
-
 const onMediaFallback = event => event.target.src = FALLBACK_IMAGE;
-
-
 
 export default function StockNewsComponent() {
     const [dataArray, setDataArray] = useState([]);
     const [counter, setCounter] = useState(0);
+    const [isModalVisible, setIsModalVisible] = useState(false); 
+    const [modalData, setModalData] = useState("");
     const regicomponentDidMountster = async () => {
       console.log(counter);
       if (counter <= 1) {
@@ -29,6 +28,12 @@ export default function StockNewsComponent() {
       console.log(dataArray);
       }
     };
+
+    const setModalsData = (data) => {
+      setModalData(data);
+      setIsModalVisible(true);
+
+    }
 
     try{
     console.log("i am constructor");
@@ -63,10 +68,19 @@ export default function StockNewsComponent() {
             </CardContent>
             <CardActions sx={{ maxHeight: '20%'}}>
               <Button style={{marginLeft: '5px'}} size="small" onClick={event =>  window.location.href=p.url}>Learn More</Button>
+              <Button style={{marginLeft: '5px'}} size="small" onClick={() =>  setModalsData(p.description)}>Summary</Button>
             </CardActions>
           </Card> 
     </li>
 ))}  
+
+  <Modal title="Summary"
+  visible={isModalVisible} 
+  onCancel={() => setIsModalVisible(false)}
+  footer={null}> 
+  <p>{modalData}</p> 
+
+  </Modal> 
     </ul>          
     );
 }
