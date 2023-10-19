@@ -17,6 +17,8 @@ export default function InsightsComponent() {
 
   const company_market_value = [520, 670, 270, 780, 400, 300, 900, 340, 472, 780]
 
+  const current_price_company = [120, 110, 100, 190, 200, 140, 150, 210, 104, 118]
+
   return (
      
     <div>
@@ -41,7 +43,10 @@ export default function InsightsComponent() {
 
     {showHide[0] && (
       <div>
-    <h1 className="stock-heading">{company[showHide[1]]}</h1>
+        <div className="stock-heading">
+    <h2>{company[showHide[1]]}</h2>
+    <h3>Current Stock Price: {current_price_company[showHide[1]]}</h3>
+       </div>
     <div className="insights-container">
       <div className="speedometer">
         <ReactSpeedometer
