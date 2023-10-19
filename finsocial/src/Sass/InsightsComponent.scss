@@ -1,0 +1,114 @@
+/* InsightsComponent.scss */
+
+/* Style the container holding the speedometers */
+
+.insights-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center; /* Arrange speedometers side by side */
+    align-items:center;
+    padding: 30px; /* Add padding for spacing */
+  }
+
+.search-stocks{
+    display: flex;
+    flex-direction: row;
+    padding-top: 3%;
+    margin: auto;
+    width: 50%;
+    
+}
+    
+    input {
+      align-items: center;
+      width: 100%;
+      height: 35px;
+      background-color: whitesmoke;
+      border: 1px solid #bbbbbb;
+      border-radius: 10px;
+      color: #212121;
+      padding-left: 10px;
+      font-size: 13px;
+      outline: none;
+      font-family: Inter;
+      background: white url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'%3E%3C/path%3E%3C/svg%3E") no-repeat 13px center;
+    }
+  
+    input:focus {
+      padding-left: 40px;
+      border: 1px solid #707070;
+
+    }
+  
+    ::placeholder {
+      font-size: 14px;
+      font-family: Inter;
+      padding: 40px;
+    }
+
+  
+  
+  /* Style individual speedometers */
+  .speedometer {
+    /*flex: 1; /* Distribute available space evenly between speedometers */
+    max-width: 450px; /* Adjust the maximum width as needed */
+    margin-right: 25px; /* Add margin for spacing between speedometers */
+    padding-top: 20px;
+    background-color: #f0f0f0; /* Set background color */
+    /*border: 1px solid #ccc; /* Add a border */
+    border-radius: 10px; /* Rounded corners */
+    /*box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+    text-align: center;
+    max-height: 320px;
+    align-items: center;
+    padding-left: 10px;
+  }
+  
+  /* Style the speedometer title (currentValueText) */
+  .speedometer h2 {
+    font-size: 20px;
+    /*margin-bottom: 10px;*/
+  }
+  
+  /* Style the speedometer value */
+  .speedometer .current-value {
+    font-size: 24px;
+    font-weight: bold;
+    color: #007bff; /* Change text color */
+  }
+  
+  /* Style the segment labels */
+  .speedometer .segment-label {
+    color: #555;
+    font-size: 14px;
+    /*margin-top: 5px;*/
+  }
+
+  .company-stocks{
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    width: 50%;
+
+    button{
+      padding: 10px;
+      border: 1px solid #bbbbbb;
+      border-radius: 10px;
+      color: #212121;
+      width: 100px;
+    
+    }
+
+  }
+  .stock-heading{
+    margin: auto;
+    text-align: center;
+    width: 20%;
+    color: #555;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    padding: 1%;
+  }
+
+  
+  

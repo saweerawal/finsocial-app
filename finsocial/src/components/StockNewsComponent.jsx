@@ -62,7 +62,6 @@ export default function StockNewsComponent() {
               </Typography>
             </CardContent>
             <CardActions sx={{ maxHeight: '20%'}}>
-              <Button size="small">Share</Button>
               <Button size="small">Learn More</Button>
             </CardActions>
           </Card> 
