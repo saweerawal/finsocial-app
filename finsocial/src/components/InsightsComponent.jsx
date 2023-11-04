@@ -3,13 +3,53 @@ import {
   AiOutlineSearch,
 } from "react-icons/ai";
 import "../Sass/InsightsComponent.scss";  // Import your CSS styles
+import { getAllStocks } from "../api/FirestoreAPI";
+import { useNavigate } from "react-router-dom";
 import ReactSpeedometer from "react-d3-speedometer/slim";
 
 export default function InsightsComponent() {
+  const [stocks, setStocks] = useState([]);
+  const [currentStock, setCurrentStock] = useState({});
+  const [filteredStocks, setFilteredStocks] = useState([]);
   const [searchInput, setSearchInput] = useState("");
-  const [showHide, setshowHide] = useState([false, Number])
+  const [showHide, setshowHide] = useState([false, Number]);
+  let navigate = useNavigate();
+
+  const openStock = (stock) => {
+    setCurrentStock(stock);
+    setshowHide([true, 11]);
+    setSearchInput("");
+  };
+
+  const handleSearch = () => {
+    if (searchInput !== "") {
+      let searched = stocks.filter((stock) => {
+        return Object.values(stock)
+          .join("")
+          .toLowerCase()
+          .includes(searchInput.toLowerCase());
+      });
+      setFilteredStocks(searched);
+    } else {
+      setFilteredStocks(stocks);
+    }
+  };
+
+  useEffect(() => {
+    let debounced = setTimeout(() => {
+      handleSearch();
+    }, 10);
+
+    return () => clearTimeout(debounced);
+  }, [searchInput]);
+
+  useEffect(() => {
+    getAllStocks(setStocks);
+  }, []);
+
   const buttonClick = (index) => {
     setshowHide([true, index])
+    setCurrentStock({});
   }
   const company = ["TCS", "Infosys", "Tata", "HDFC", "SBI", "Reliance", "Zomato", "Wipro", "HCL", "ITC"]
   
@@ -22,11 +62,31 @@ export default function InsightsComponent() {
   return (
      
     <div>
+      {searchInput.length === 0 ? (
+      <></>
+    ) : (
+      <div className="stocksearch-results">
+        {filteredStocks.length === 0 ? (
+          <div className="stocksearch-inner">No Results Found..</div>
+        ) : (
+          
+          filteredStocks.map((stock) => (
+            <div className="stocksearch-inner" onClick={() => openStock(stock)}>
+              <p className="companyname">{stock.companyName}</p>  
+            </div>
+          )) 
+        )}
+      </div>
+    )}
+
       <div className="search-stocks">
       <input
         placeholder="Search Stocks.."
-        onChange={(event) => setSearchInput(event.target.value)}
+        value={searchInput}
+        onChange={event => {
+          setSearchInput(event.target.value)}}
       />
+    
     </div>
 
     <div className="company-stocks">
@@ -44,8 +104,8 @@ export default function InsightsComponent() {
     {showHide[0] && (
       <div>
         <div className="stock-heading">
-    <h2>{company[showHide[1]]}</h2>
-    <h3>Current Stock Price: {current_price_company[showHide[1]]}</h3>
+    <h2>{(showHide[1]==11) ? currentStock.companyName : company[showHide[1]] }</h2>
+    {/*<h3>Current Stock Price: {(showHide[1]==-1) ? currentStock.expertAnalysis : current_price_company[showHide[1]]}</h3>*/}
        </div>
     <div className="insights-container">
       <div className="speedometer">
@@ -79,10 +139,10 @@ export default function InsightsComponent() {
       <div className="speedometer">
         <ReactSpeedometer
           maxValue={999}
-          value={company_market_value[showHide[1]]}
+          value={(showHide[1]==11) ? currentStock.expertAnalysis : company_market_value[showHide[1]]}
           width={360}
           height={260}
-          currentValueText="Market Analysis"
+          currentValueText="Expert Analysis"
           segments={3}
           customSegmentLabels={[
             {
@@ -104,6 +164,19 @@ export default function InsightsComponent() {
         />
       </div>
     </div>
+
+    <iframe className="iframe-prop"
+    width="66%"
+    height="500px"
+    style={{
+      background: '#f0f0f0',
+      padding: '10px',
+      border: 'none',
+      borderRadius: '15px',
+      boxShadow: '0 2px 4px 0 rgba(0,0,0,.2)'
+    }}
+    src={`https://jika.io/embed/area-chart?symbol=${ (currentStock.symbol ==-1 ) ? "AAPL" : "AAPL" }&selection=one_month&closeKey=close`}
+/>
     </div>
     )}
     </div>
