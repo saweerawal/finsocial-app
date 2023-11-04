@@ -7,8 +7,7 @@ import {
   AiOutlineSearch,
   AiOutlineFund,
   AiOutlineBell,
-  AiOutlineAppstore,
-  AiOutlineIdcard
+  AiOutlineAppstore
 } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { getAllUsers } from "../../../api/FirestoreAPI";
@@ -103,13 +102,6 @@ export default function Topbar({ currentUser }) {
             onClick={() => goToRoute("/stocknews")}
           />
           <div onClick={() => goToRoute("/stocknews")}>Stock News</div>
-          </div>
-          <div className="icon-labels react-icon">
-          <AiOutlineIdcard
-            size={30}
-            onClick={() => goToRoute("/portfolio")}
-          />
-          <div onClick={() => goToRoute("/portfolio")}>Portfolio</div>
           </div>
           <div className="icon-labels react-icon">
           <AiOutlineUserSwitch

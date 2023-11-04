@@ -9,7 +9,6 @@ import StockNewsLayout from "../layouts/StockNewsLayout";
 import ProfileLayout from "../layouts/ProfileLayout";
 import Insights from "../Pages/Insights";
 import Notifications from "../Pages/Notifications";
-import Portfolio from "../Pages/Portfolio";
 
 export const router = createBrowserRouter([
     {
@@ -43,9 +42,5 @@ export const router = createBrowserRouter([
     {
     path: "/notifications",
     element: <Notifications/>,
-  },
-  {
-    path: "/portfolio",
-    element: <Portfolio/>,
   }
   ]);
