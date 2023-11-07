@@ -51,7 +51,9 @@ export default function InsightsComponent() {
     setshowHide([true, index])
     setCurrentStock({});
   }
-  const company = ["TCS", "Infosys", "Tata", "HDFC", "SBI", "Reliance", "Zomato", "Wipro", "HCL", "ITC"]
+  const company = ["TCS", "Infosys", "TataComm", "HDFC", "SBI", "Reliance", "Zomato", "Wipro", "HCL", "ITC"]
+
+  const company_symbol = ["TCS", "INFY", "TATACOMM", "HDFCBANK", "SBIN", "RELIANCE", "ZOMATO", "WIPRO", "HCLTECH", "ITC"]
   
   const company_sentiment_value = [360, 450, 100, 780, 460, 500, 680, 260, 670, 430]
 
@@ -175,7 +177,7 @@ export default function InsightsComponent() {
       borderRadius: '15px',
       boxShadow: '0 2px 4px 0 rgba(0,0,0,.2)'
     }}
-    src={`https://jika.io/embed/area-chart?symbol=${ (currentStock.symbol ==-1 ) ? "AAPL" : "AAPL" }&selection=one_month&closeKey=close`}
+    src={`https://jika.io/embed/area-chart?symbol=${ (showHide[1]==11) ? currentStock.symbol  : company_symbol[showHide[1]] + ".NS" }&selection=one_month&closeKey=close`}
 />
     </div>
     )}
