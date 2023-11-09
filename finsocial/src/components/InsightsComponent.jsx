@@ -53,7 +53,7 @@ export default function InsightsComponent() {
 
   const buttonClick = (index) => {
     setshowHide([true, index])
-    setCurrentStock({});
+    setCurrentStock({'symbol': company_symbol[index], 'expertAnalysis': company_market_value[index], 'companyName': company[index], 'sentimentAnalysis': company_sentiment_value[index]});
   }
 
   const addPositivePosts = () => {
@@ -61,6 +61,12 @@ export default function InsightsComponent() {
     setbtnClick2(false);
     setbtnClick3(false);
     setbtnClick4(false);
+    var ch = currentStock.sentimentAnalysis + 50;
+    if(ch >= 999){
+      ch = 999;
+    }
+    setCurrentStock({'symbol': currentStock.symbol, 'expertAnalysis': currentStock.expertAnalysis, 'companyName': currentStock.companyName, 'sentimentAnalysis': ch});
+  
   }
 
   const addNegativePosts = () => {
@@ -68,6 +74,13 @@ export default function InsightsComponent() {
     setbtnClick2(true);
     setbtnClick3(false);
     setbtnClick4(false);
+    var ch = currentStock.sentimentAnalysis - 50;
+    if(ch <= 0){
+      ch = 0;
+    }
+    setCurrentStock({'symbol': currentStock.symbol, 'expertAnalysis': currentStock.expertAnalysis, 'companyName': currentStock.companyName, 'sentimentAnalysis': ch})
+
+
   }
 
   const addNegativeNews = () => {
@@ -75,6 +88,11 @@ export default function InsightsComponent() {
     setbtnClick2(false);
     setbtnClick3(false);
     setbtnClick4(true);
+    var ch = currentStock.sentimentAnalysis - 50;
+    if(ch <= 0){
+      ch = 0;
+    }
+    setCurrentStock({'symbol': currentStock.symbol, 'expertAnalysis': currentStock.expertAnalysis, 'companyName': currentStock.companyName, 'sentimentAnalysis': ch})
   }
 
   const addPositiveNews = () => {
@@ -82,7 +100,13 @@ export default function InsightsComponent() {
     setbtnClick2(false);
     setbtnClick3(true);
     setbtnClick4(false);
+    var ch = currentStock.sentimentAnalysis + 50;
+    if(ch > 999){
+      ch = 999;
+    }
+    setCurrentStock({'symbol': currentStock.symbol, 'expertAnalysis': currentStock.expertAnalysis, 'companyName': currentStock.companyName, 'sentimentAnalysis': ch})
   }
+
   const company = ["TCS", "Infosys", "TataComm", "HDFC", "SBI", "Reliance", "Zomato", "Wipro", "HCL", "ITC"]
 
   const company_symbol = ["TCS", "INFY", "TATACOMM", "HDFCBANK", "SBIN", "RELIANCE", "ZOMATO", "WIPRO", "HCLTECH", "ITC"]
@@ -140,12 +164,12 @@ export default function InsightsComponent() {
         <div className="stock-heading">
     <h2>{(showHide[1]==11) ? currentStock.companyName : company[showHide[1]] }</h2>
         <div className="button-heads">
-        <button style={{fontWeight: btnclick1 === true ? "bold" : "normal", borderWidth: btnclick1 === true ? "2px" : "1px", borderColor: btnclick1 === true ? "black" : "#bbbbbb" }} onClick={() => addPositivePosts()} className="button-prop">Increase Positive Posts</button>
-        <button style={{fontWeight: btnclick2 === true ? "bold" : "normal", borderWidth: btnclick2 === true ? "2px" : "1px", borderColor: btnclick2 === true ? "black" : "#bbbbbb" }} onClick={() => addNegativePosts()} className="button-prop">Increase Negative Posts</button>
+        <button style={{fontWeight: btnclick1 === true ? "bold" : "normal", borderWidth: btnclick1 === true ? "2px" : "1px", borderColor: btnclick1 === true ? "black" : "#bbbbbb" }} onClick={() => addPositivePosts()} className="button-prop">Increase 50 Positive Posts</button>
+        <button style={{fontWeight: btnclick2 === true ? "bold" : "normal", borderWidth: btnclick2 === true ? "2px" : "1px", borderColor: btnclick2 === true ? "black" : "#bbbbbb" }} onClick={() => addNegativePosts()} className="button-prop">Increase 50 Negative Posts</button>
         </div>
         <div className="button-heads">
-        <button style={{fontWeight: btnclick3 === true ? "bold" : "normal", borderWidth: btnclick3 === true ? "2px" : "1px", borderColor: btnclick3 === true ? "black" : "#bbbbbb" }} onClick={() => addPositiveNews()} className="button-prop">Increase Positive News</button>
-        <button style={{fontWeight: btnclick4 === true ? "bold" : "normal", borderWidth: btnclick4 === true ? "2px" : "1px", borderColor: btnclick4 === true ? "black" : "#bbbbbb" }} onClick={() => addNegativeNews()} className="button-prop">Increase Negative News</button>
+        <button style={{fontWeight: btnclick3 === true ? "bold" : "normal", borderWidth: btnclick3 === true ? "2px" : "1px", borderColor: btnclick3 === true ? "black" : "#bbbbbb" }} onClick={() => addPositiveNews()} className="button-prop">Increase 50 Positive News</button>
+        <button style={{fontWeight: btnclick4 === true ? "bold" : "normal", borderWidth: btnclick4 === true ? "2px" : "1px", borderColor: btnclick4 === true ? "black" : "#bbbbbb" }} onClick={() => addNegativeNews()} className="button-prop">Increase 50 Negative News</button>
         </div>
 
     {/*<h3>Current Stock Price: {(showHide[1]==-1) ? currentStock.expertAnalysis : current_price_company[showHide[1]]}</h3>*/}
@@ -154,7 +178,7 @@ export default function InsightsComponent() {
       <div className="speedometer">
         <ReactSpeedometer
           maxValue={999}
-          value={company_sentiment_value[showHide[1]]}
+          value={currentStock.sentimentAnalysis}
           width={360}
           height={260}
           currentValueText="Sentiment Analysis"
@@ -182,7 +206,7 @@ export default function InsightsComponent() {
       <div className="speedometer">
         <ReactSpeedometer
           maxValue={999}
-          value={(showHide[1]==11) ? currentStock.expertAnalysis : company_market_value[showHide[1]]}
+          value={currentStock.expertAnalysis}
           width={360}
           height={260}
           currentValueText="Expert Analysis"
