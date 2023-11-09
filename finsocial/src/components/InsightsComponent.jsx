@@ -13,6 +13,10 @@ export default function InsightsComponent() {
   const [filteredStocks, setFilteredStocks] = useState([]);
   const [searchInput, setSearchInput] = useState("");
   const [showHide, setshowHide] = useState([false, Number]);
+  const [btnclick1, setbtnClick1] = useState(false);
+  const [btnclick2, setbtnClick2] = useState(false);
+  const [btnclick3, setbtnClick3] = useState(false);
+  const [btnclick4, setbtnClick4] = useState(false);
   let navigate = useNavigate();
 
   const openStock = (stock) => {
@@ -50,6 +54,34 @@ export default function InsightsComponent() {
   const buttonClick = (index) => {
     setshowHide([true, index])
     setCurrentStock({});
+  }
+
+  const addPositivePosts = () => {
+    setbtnClick1(true);
+    setbtnClick2(false);
+    setbtnClick3(false);
+    setbtnClick4(false);
+  }
+
+  const addNegativePosts = () => {
+    setbtnClick1(false);
+    setbtnClick2(true);
+    setbtnClick3(false);
+    setbtnClick4(false);
+  }
+
+  const addNegativeNews = () => {
+    setbtnClick1(false);
+    setbtnClick2(false);
+    setbtnClick3(false);
+    setbtnClick4(true);
+  }
+
+  const addPositiveNews = () => {
+    setbtnClick1(false);
+    setbtnClick2(false);
+    setbtnClick3(true);
+    setbtnClick4(false);
   }
   const company = ["TCS", "Infosys", "TataComm", "HDFC", "SBI", "Reliance", "Zomato", "Wipro", "HCL", "ITC"]
 
@@ -107,6 +139,15 @@ export default function InsightsComponent() {
       <div>
         <div className="stock-heading">
     <h2>{(showHide[1]==11) ? currentStock.companyName : company[showHide[1]] }</h2>
+        <div className="button-heads">
+        <button style={{fontWeight: btnclick1 === true ? "bold" : "normal", borderWidth: btnclick1 === true ? "2px" : "1px", borderColor: btnclick1 === true ? "black" : "#bbbbbb" }} onClick={() => addPositivePosts()} className="button-prop">Increase Positive Posts</button>
+        <button style={{fontWeight: btnclick2 === true ? "bold" : "normal", borderWidth: btnclick2 === true ? "2px" : "1px", borderColor: btnclick2 === true ? "black" : "#bbbbbb" }} onClick={() => addNegativePosts()} className="button-prop">Increase Negative Posts</button>
+        </div>
+        <div className="button-heads">
+        <button style={{fontWeight: btnclick3 === true ? "bold" : "normal", borderWidth: btnclick3 === true ? "2px" : "1px", borderColor: btnclick3 === true ? "black" : "#bbbbbb" }} onClick={() => addPositiveNews()} className="button-prop">Increase Positive News</button>
+        <button style={{fontWeight: btnclick4 === true ? "bold" : "normal", borderWidth: btnclick4 === true ? "2px" : "1px", borderColor: btnclick4 === true ? "black" : "#bbbbbb" }} onClick={() => addNegativeNews()} className="button-prop">Increase Negative News</button>
+        </div>
+
     {/*<h3>Current Stock Price: {(showHide[1]==-1) ? currentStock.expertAnalysis : current_price_company[showHide[1]]}</h3>*/}
        </div>
     <div className="insights-container">
