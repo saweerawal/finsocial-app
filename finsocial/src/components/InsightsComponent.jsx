@@ -167,11 +167,6 @@ export default function InsightsComponent() {
         <button style={{fontWeight: btnclick1 === true ? "bold" : "normal", borderWidth: btnclick1 === true ? "2px" : "1px", borderColor: btnclick1 === true ? "black" : "#bbbbbb" }} onClick={() => addPositivePosts()} className="button-prop">Increase 50 Positive Posts</button>
         <button style={{fontWeight: btnclick2 === true ? "bold" : "normal", borderWidth: btnclick2 === true ? "2px" : "1px", borderColor: btnclick2 === true ? "black" : "#bbbbbb" }} onClick={() => addNegativePosts()} className="button-prop">Increase 50 Negative Posts</button>
         </div>
-        <div className="button-heads">
-        <button style={{fontWeight: btnclick3 === true ? "bold" : "normal", borderWidth: btnclick3 === true ? "2px" : "1px", borderColor: btnclick3 === true ? "black" : "#bbbbbb" }} onClick={() => addPositiveNews()} className="button-prop">Increase 50 Positive News</button>
-        <button style={{fontWeight: btnclick4 === true ? "bold" : "normal", borderWidth: btnclick4 === true ? "2px" : "1px", borderColor: btnclick4 === true ? "black" : "#bbbbbb" }} onClick={() => addNegativeNews()} className="button-prop">Increase 50 Negative News</button>
-        </div>
-
     {/*<h3>Current Stock Price: {(showHide[1]==-1) ? currentStock.expertAnalysis : current_price_company[showHide[1]]}</h3>*/}
        </div>
     <div className="insights-container">
