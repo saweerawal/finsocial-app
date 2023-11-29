@@ -15,8 +15,6 @@ export default function InsightsComponent() {
   const [showHide, setshowHide] = useState([false, Number]);
   const [btnclick1, setbtnClick1] = useState(false);
   const [btnclick2, setbtnClick2] = useState(false);
-  const [btnclick3, setbtnClick3] = useState(false);
-  const [btnclick4, setbtnClick4] = useState(false);
   let navigate = useNavigate();
 
   const openStock = (stock) => {
@@ -59,8 +57,6 @@ export default function InsightsComponent() {
   const addPositivePosts = () => {
     setbtnClick1(true);
     setbtnClick2(false);
-    setbtnClick3(false);
-    setbtnClick4(false);
     var ch = currentStock.sentimentAnalysis + 50;
     if(ch >= 999){
       ch = 999;
@@ -72,8 +68,6 @@ export default function InsightsComponent() {
   const addNegativePosts = () => {
     setbtnClick1(false);
     setbtnClick2(true);
-    setbtnClick3(false);
-    setbtnClick4(false);
     var ch = currentStock.sentimentAnalysis - 50;
     if(ch <= 0){
       ch = 0;
@@ -81,30 +75,6 @@ export default function InsightsComponent() {
     setCurrentStock({'symbol': currentStock.symbol, 'expertAnalysis': currentStock.expertAnalysis, 'companyName': currentStock.companyName, 'sentimentAnalysis': ch})
 
 
-  }
-
-  const addNegativeNews = () => {
-    setbtnClick1(false);
-    setbtnClick2(false);
-    setbtnClick3(false);
-    setbtnClick4(true);
-    var ch = currentStock.sentimentAnalysis - 50;
-    if(ch <= 0){
-      ch = 0;
-    }
-    setCurrentStock({'symbol': currentStock.symbol, 'expertAnalysis': currentStock.expertAnalysis, 'companyName': currentStock.companyName, 'sentimentAnalysis': ch})
-  }
-
-  const addPositiveNews = () => {
-    setbtnClick1(false);
-    setbtnClick2(false);
-    setbtnClick3(true);
-    setbtnClick4(false);
-    var ch = currentStock.sentimentAnalysis + 50;
-    if(ch > 999){
-      ch = 999;
-    }
-    setCurrentStock({'symbol': currentStock.symbol, 'expertAnalysis': currentStock.expertAnalysis, 'companyName': currentStock.companyName, 'sentimentAnalysis': ch})
   }
 
   const company = ["TCS", "Infosys", "TataComm", "HDFC", "SBI", "Reliance", "Zomato", "Wipro", "HCL", "ITC"]
@@ -139,6 +109,7 @@ export default function InsightsComponent() {
 
       <div className="search-stocks">
       <input
+        className="input-search-stocks"
         placeholder="Search Stocks.."
         value={searchInput}
         onChange={event => {
